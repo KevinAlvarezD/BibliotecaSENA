@@ -242,4 +242,66 @@ public class Functions
     }
 
 
+    public static void EliminarLibro()
+    {
+        Console.Write("Ingrese el Id del libro que desea eliminar: ");
+        int id;
+        if (!int.TryParse(Console.ReadLine(), out id))
+        {
+            Console.WriteLine("Id inválido. Intente de nuevo.");
+            Thread.Sleep(4000); // Espera 4 segundos antes de volver al menú
+            return;
+        }
+
+        var libroAEliminar = libros.FirstOrDefault(libro => libro.Id == id);
+        if (libroAEliminar == null)
+        {
+            Console.WriteLine("No se encontró el libro con el Id ingresado.");
+            Thread.Sleep(4000); // Espera 4 segundos antes de volver al menú
+            return;
+        }
+
+        libros.Remove(libroAEliminar);
+        Console.WriteLine($"El libro con el Id {id} ha sido eliminado exitosamente.");
+        Console.WriteLine($"El libro eliminado es:");
+        libroAEliminar.Descripcion();
+         Thread.Sleep(5000); // Espera 5 segundos antes de volver al menú
+    }
+
+    public static void AplicarDescuento()
+    {
+        Console.Write("Ingrese el Id del libro al que desea aplicar el descuento: ");
+        int id;
+        if (!int.TryParse(Console.ReadLine(), out id))
+        {
+            Console.WriteLine("Id inválido. Intente de nuevo.");
+            Thread.Sleep(4000); // Espera 4 segundos antes de volver al menú
+            return;
+        }
+
+        var libroDescuento = libros.FirstOrDefault(libro => libro.Id == id);
+        if (libroDescuento == null)
+        {
+            Console.WriteLine("No se encontró el libro con el Id ingresado.");
+            Thread.Sleep(4000); // Espera 4 segundos antes de volver al menú
+            return;
+        }
+
+        Console.Write("Ingrese el porcentaje de descuento (entre 1 y 100): ");
+        double descuento;
+        if (!double.TryParse(Console.ReadLine(), out descuento) || descuento < 1 || descuento > 100)
+        {
+            Console.WriteLine("Porcentaje de descuento inválido. Intente de nuevo.");
+            Thread.Sleep(4000); // Espera 4 segundos antes de volver al menú
+            return;
+        }
+        libroDescuento.Precio -= (libroDescuento.Precio * descuento) / 100;
+        Console.WriteLine($"El libro con el Id {id} ha sido aplicado el descuento exitosamente.");
+        Console.WriteLine($"El libro modificado es:");
+        libroDescuento.Descripcion();
+        Thread.Sleep(5000); // Espera 5 segundos antes de volver al menú
+
+}
+
+
 }

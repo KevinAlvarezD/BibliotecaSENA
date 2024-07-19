@@ -10,7 +10,7 @@ namespace POO.Models;
 
 public class Program
 {
-        static void Main(string[] args)
+    static void Main(string[] args)
     {
         MostrarMenu();
     }
@@ -28,8 +28,8 @@ public class Program
             Console.WriteLine("| {0,-1} | {1,-43} |", "(2) ", "Clasificacion de lo Libros                                    ");
             Console.WriteLine("| {0,-1} | {1,-43} |", "(3) ", "Buscar Libro                                                  ");
             Console.WriteLine("| {0,-1} | {1,-43} |", "(4) ", "Informacion de Libro                                          ");
-            Console.WriteLine("| {0,-1} | {1,-43} |", "(5) ", "                                                              ");
-            Console.WriteLine("| {0,-1} | {1,-43} |", "(6) ", "                                                              ");
+            Console.WriteLine("| {0,-1} | {1,-43} |", "(5) ", "Eliminar Libro                                                ");
+            Console.WriteLine("| {0,-1} | {1,-43} |", "(6) ", "Aplicar Descuento                                             ");
             Console.WriteLine("| {0,-1} | {1,-43} |", "(7) ", "                                                              ");
             Console.WriteLine("| {0,-1} | {1,-53} |", "(0) ", "Salir                                                         ");
             Console.WriteLine("=========================================================================");
@@ -58,7 +58,13 @@ public class Program
                     Functions.BuscarLibro();
                     break;
                 case 4:
-                    Functions.MostrarDescripcion(); 
+                    Functions.MostrarDescripcion();
+                    break;
+                case 5:
+                    Functions.EliminarLibro();
+                    break;
+                case 6:
+                    Functions.AplicarDescuento(); 
                     break;
 
                 default:
@@ -69,9 +75,4 @@ public class Program
             Console.WriteLine();
         }
     }
-
-
-
-
-
 }
